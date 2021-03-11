@@ -69,8 +69,8 @@ run_service() {
         exit 1
     fi
 
-    wait-for-tcp "${PULP_DB_HOST:-localhost}" "${PULP_DB_PORT:-5432}"
-    wait-for-tcp "${PULP_REDIS_HOST:-localhost}" "${PULP_REDIS_PORT:-6379}"
+    # wait-for-tcp "${PULP_DB_HOST:-localhost}" "${PULP_DB_PORT:-5432}"
+    # wait-for-tcp "${PULP_REDIS_HOST:-localhost}" "${PULP_REDIS_PORT:-6379}"
 
     if [[ "$WITH_DEV_INSTALL" -eq "1" ]]; then
         install_local_deps
