@@ -188,7 +188,7 @@ multidict==6.0.2
     # via
     #   aiohttp
     #   yarl
-oauthlib==3.2.0
+oauthlib==3.2.1
     # via
     #   requests-oauthlib
     #   social-auth-core
