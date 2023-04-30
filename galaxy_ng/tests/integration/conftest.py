@@ -62,6 +62,12 @@ min_hub_version: This marker takes an argument that indicates the minimum hub ve
 iqe_rbac_test: imported iqe tests checking role permissions
 sync: sync tests against stage
 certified_sync: sync tests container against container
+auto_approve: run tests that require AUTO_APPROVE to be set to true
+private_repos: run tests verifying private repositories
+rbac_repos: tests verifying rbac roles on custom repositories
+rm_sync: tests verifying syncing custom repositories
+x_repo_search: tests verifying cross-repo search endpoint
+repositories: tests verifying custom repositories
 """
 
 
@@ -112,6 +118,11 @@ class AnsibleConfigFixture(dict):
         "ldap": {  # this is a superuser in ldap profile
             "username": "professor",
             "password": "professor",
+            "token": None,
+        },
+        "ldap_non_admin": {  # this is a regular user in ldap profile
+            "username": "fry",
+            "password": "fry",
             "token": None,
         },
         "ee_admin": {
@@ -302,6 +313,9 @@ class AnsibleConfigFixture(dict):
                 'CONTAINER_REGISTRY',
                 'localhost:5001'
             )
+
+        elif key == 'server':
+            return self["url"].split("/api/")[0]
 
         else:
             raise Exception(f'Unknown config key: {self.namespace}.{key}')
@@ -646,3 +660,9 @@ def sync_instance_crc():
     set_synclist(client, [])
 
     return (manifest, config)
+
+
+@pytest.fixture(scope="function")
+def settings(ansible_config):
+    api_client = get_client(ansible_config("admin"))
+    return api_client("_ui/v1/settings/")
