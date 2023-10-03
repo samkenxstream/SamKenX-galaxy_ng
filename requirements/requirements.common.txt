@@ -354,7 +354,7 @@ uritemplate==4.1.1
     # via drf-spectacular
 url-normalize==1.4.3
     # via pulpcore
-urllib3==1.26.15
+urllib3==1.26.17
     # via requests
 urlman==2.0.1
     # via django-lifecycle
