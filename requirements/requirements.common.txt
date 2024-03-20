@@ -39,7 +39,7 @@ backoff==2.2.1
     # via pulpcore
 bindep==2.11.0
     # via ansible-builder
-black==23.3.0
+black==24.3.0
     # via ansible-lint
 bleach-allowlist==1.0.3
     # via galaxy-importer
