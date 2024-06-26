@@ -112,7 +112,7 @@ django==3.2.18
     #   pulpcore
 djangorestframework-queryfields==1.0.0
     # via pulpcore
-djangorestframework==3.14.0
+djangorestframework==3.15.2
     # via
     #   drf-access-policy
     #   drf-nested-routers
